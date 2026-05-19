@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 1.1 — O que é Cowork | Claude Cowork</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { darkMode:'class', theme:{extend:{colors:{primary:'#FACC15',dark:{900:'#111827',800:'#1f2937',700:'#374151',600:'#4b5563'}}}}}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .bg-emerald-500\/20 { background-color: rgba(5,150,105,0.12); }
+    html:not(.dark) .bg-emerald-500\/10 { background-color: rgba(5,150,105,0.08); }
+    html:not(.dark) .border-emerald-500\/30 { border-color: rgba(5,150,105,0.25); }
+    html:not(.dark) .hover\:bg-emerald-500\/10:hover { background-color: rgba(5,150,105,0.08); }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37,99,235,0.08); }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-purple-500\/10:hover { background-color: rgba(124,58,237,0.08); }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161,98,7,0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161,98,7,0.25); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161,98,7,0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255,255,255,0.95); }
+    .dark .border-dark-600 { border-color: #374151; }
+    .dark .divide-dark-600 > :not([hidden]) ~ :not([hidden]) { border-color: #374151; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">🤝</span><span class="font-bold text-lg hidden sm:inline">Claude Cowork</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-emerald-400 bg-emerald-500/10"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span></a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Recursos</span></a>
+          <a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Workflows</span></a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <div class="flex items-center space-x-2 text-sm text-neutral-400">
+      <a href="../../index.html" class="hover:text-emerald-400">Início</a><span>/</span>
+      <a href="index.html" class="hover:text-emerald-400">Trilha 1</a><span>/</span>
+      <span class="text-emerald-400">Módulo 1.1</span>
+    </div>
+  </nav>
+
+  <header class="bg-gradient-to-br from-emerald-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-full mb-4">MÓDULO 1.1</span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🚗 O que é Cowork (Projects)</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">Cowork é Projects no claude.ai — um espaço onde contexto, instruções e arquivos persistem entre conversas. Este módulo destrava o conceito antes do botão.</p>
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">6</div><div class="text-xs text-neutral-400">Tópicos</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">40</div><div class="text-xs text-neutral-400">Minutos</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">Básico</div><div class="text-xs text-neutral-400">Nível</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">Teoria</div><div class="text-xs text-neutral-400">Tipo</div></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- TÓPICO 1 -->
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">🚗 Projeto vs conversa: a diferença essencial</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Um Chat no claude.ai é uma <strong class="text-emerald-400">conversa avulsa</strong>: ao final, o contexto evapora.
+        Um Project é um <strong class="text-emerald-400">container persistente</strong>: várias conversas convivem ali, todas
+        nascendo do mesmo contexto, das mesmas instruções e dos mesmos arquivos de conhecimento. Mesmo modelo, comportamento
+        radicalmente diferente.
+      </p>
+
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">💡</span> A analogia que segura</h3>
+        <p class="text-neutral-300 mb-3">Pense em Chat como um <strong>papel rascunho</strong>: você escreve, usa, joga fora. Pense em Project como uma <strong>mesa de trabalho</strong>: seus papéis ficam ali, suas ferramentas estão à mão, você volta no dia seguinte e tudo está no lugar.</p>
+        <p class="text-neutral-300">Mesa de trabalho não substitui rascunho — você ainda usa folha solta para riscar uma ideia que não vai voltar.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+          <h4 class="font-bold text-emerald-400 mb-4">✓ Cowork brilha quando</h4>
+          <ul class="space-y-3 text-neutral-300 text-sm">
+            <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Você repete o mesmo prompt 3+ vezes</span></li>
+            <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Carrega os mesmos arquivos toda hora</span></li>
+            <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Quer respostas em tom/formato fixo</span></li>
+            <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Workflow se estende por dias/semanas</span></li>
+          </ul>
+        </div>
+        <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+          <h4 class="font-bold text-red-400 mb-4">✗ Use Chat quando</h4>
+          <ul class="space-y-3 text-neutral-300 text-sm">
+            <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Pergunta one-shot que não volta</span></li>
+            <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Brainstorm aberto sem foco específico</span></li>
+            <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Tradução pontual de um trecho</span></li>
+            <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Você nem sabe se vai usar de novo</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold mb-1">Persistência</div><div class="text-sm text-neutral-400">Estado sobrevive entre chats</div></div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold mb-1">Contexto compartilhado</div><div class="text-sm text-neutral-400">Toda conversa começa carregada</div></div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold mb-1">Conhecimento curado</div><div class="text-sm text-neutral-400">Arquivos vivem ao lado</div></div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold mb-1">Instructions fixas</div><div class="text-sm text-neutral-400">Tom e regras sempre presentes</div></div>
+      </div>
+    </section>
+
+    <!-- TÓPICO 2 -->
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">🧠 Contexto persistente — por que o Claude "lembra"</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Tecnicamente, o modelo <strong class="text-emerald-400">não tem memória</strong> entre chats. O que acontece no Cowork é
+        diferente: a cada nova conversa, o sistema <em>monta</em> automaticamente um system prompt que inclui suas custom
+        instructions e os arquivos do knowledge. O Claude começa toda conversa já sabendo tudo aquilo.
+      </p>
+
+      <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> O que entra no contexto a cada chat</h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">1.</span><span><strong>Custom instructions</strong> do projeto — sempre, do início ao fim</span></li>
+          <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">2.</span><span><strong>Knowledge files</strong> — disponíveis para consulta pelo modelo</span></li>
+          <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">3.</span><span><strong>Descrição</strong> do projeto — orientação adicional</span></li>
+          <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">4.</span><span><strong>Mensagens da conversa atual</strong> — o que você digita agora</span></li>
+        </ul>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica prática</h3>
+        <p class="text-neutral-300">Chats de um mesmo projeto <strong>não compartilham</strong> entre si. O chat de hoje não vê o chat de ontem. O que ambos compartilham é o knowledge e as instructions. Se precisa referenciar conversa anterior, copie o trecho relevante.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold mb-1">System prompt</div><div class="text-sm text-neutral-400">Injetado automaticamente</div></div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold mb-1">RAG-light</div><div class="text-sm text-neutral-400">Modelo consulta knowledge</div></div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold mb-1">Sem memória global</div><div class="text-sm text-neutral-400">Chats isolados entre si</div></div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold mb-1">Stateless modelo</div><div class="text-sm text-neutral-400">Estado vive no projeto</div></div>
+      </div>
+    </section>
+
+    <!-- TÓPICO 3 -->
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">📦 Os 4 componentes de um projeto</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Cada projeto é a soma de <strong class="text-emerald-400">4 slots distintos</strong>. Confundir os papéis é o erro #1 do
+        iniciante — quem coloca documento longo no campo de instructions estoura limite imediatamente.
+      </p>
+
+      <div class="space-y-6 mb-6">
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center"><span class="text-emerald-400 font-bold">1</span></div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Nome + Descrição</h4>
+            <p class="text-sm text-neutral-400 mb-3">Identidade do projeto</p>
+            <p class="text-neutral-300 text-sm">Nome curto e claro. Descrição em 1-2 frases que explicam o propósito. A descrição entra no contexto — não desperdice escrevendo "meu projeto".</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center"><span class="text-emerald-400 font-bold">2</span></div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Custom Instructions</h4>
+            <p class="text-sm text-neutral-400 mb-3">As regras de comportamento</p>
+            <p class="text-neutral-300 text-sm">Como o Claude deve agir: papel, tom, formato de saída, restrições, exemplos. Texto livre, mas seja específico. Pense system prompt, não documento.</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center"><span class="text-emerald-400 font-bold">3</span></div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Project Knowledge</h4>
+            <p class="text-sm text-neutral-400 mb-3">Os fatos do mundo</p>
+            <p class="text-neutral-300 text-sm">Documentos, PDFs, código, textos colados. Tudo o que o Claude precisa <em>saber</em>, mas que muda menos do que as instruções variam.</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center"><span class="text-emerald-400 font-bold">4</span></div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Chats (Histórico)</h4>
+            <p class="text-sm text-neutral-400 mb-3">O que já foi conversado</p>
+            <p class="text-neutral-300 text-sm">Cada conversa fica salva no projeto. Não compartilham contexto entre si, mas servem de busca/consulta posterior para você (não para o Claude automaticamente).</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">⚠️</span> Erro clássico</h3>
+        <p class="text-neutral-300">Colar um PDF inteiro de 30 páginas dentro do campo Custom Instructions. Isso satura o slot de regras com fatos. Lugar de fato é Knowledge; lugar de regra é Instructions.</p>
+      </div>
+    </section>
+
+    <!-- TÓPICO 4 -->
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">🎯 Quando vale criar um projeto — a regra das 3 vezes</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Projetos têm <strong class="text-emerald-400">custo de setup</strong> (nome, instructions, knowledge) e <strong class="text-emerald-400">custo de manutenção</strong> (curar quando muda). Compensa quando você roda o caso muitas vezes. A heurística é simples: <em>3 vezes é o gatilho</em>.
+      </p>
+
+      <div class="bg-dark-900 rounded-lg p-4 mb-6 border border-dark-600">
+        <pre class="text-sm text-neutral-300 overflow-x-auto font-mono"><code>Você cola o mesmo prompt pela 3ª vez:        → cria projeto
+Você precisa carregar 3 arquivos de novo:    → cria projeto
+A sessão passou de 30 min e você esqueceu
+  o que pediu no início:                     → cria projeto
+Tarefa one-shot que não volta:                → fica no Chat</code></pre>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+          <h4 class="font-bold text-emerald-400 mb-4">✓ Sinais de criar</h4>
+          <ul class="space-y-3 text-neutral-300 text-sm">
+            <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Workflow repetível</span></li>
+            <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Base de conhecimento estável</span></li>
+            <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Tom/formato precisa ser fixo</span></li>
+            <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Tarefa vai durar dias/semanas</span></li>
+          </ul>
+        </div>
+        <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+          <h4 class="font-bold text-red-400 mb-4">✗ Sinais de não criar</h4>
+          <ul class="space-y-3 text-neutral-300 text-sm">
+            <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Tarefa única, descartável</span></li>
+            <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Você nem sabe o escopo</span></li>
+            <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Exploração ampla sem foco</span></li>
+            <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Vai usar 1 vez nesta semana</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/40 p-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica: começa antes de perfeito</h3>
+        <p class="text-neutral-300">Não espere ter "o setup ideal". Cria projeto na 3ª repetição, com instructions enxutas e 2-3 arquivos. Refina conforme erros aparecem. Projeto cresce com uso.</p>
+      </div>
+    </section>
+
+    <!-- TÓPICO 5 -->
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">⚠️ O que Cowork não faz</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Cowork é poderoso onde brilha, e <strong class="text-emerald-400">limitado fora dali</strong>. Saber os limites evita
+        frustração e te direciona para o produto certo (Code ou API) quando o caso pede.
+      </p>
+
+      <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">🚫</span> Cowork NÃO</h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-red-400 mt-1">•</span><span><strong>Executa código no seu disco</strong> — não roda Python local, não toca em arquivos do FS</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400 mt-1">•</span><span><strong>Abre PRs ou commita</strong> — não tem credenciais no GitHub, não escreve no repo</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400 mt-1">•</span><span><strong>Roda agente autônomo de longa duração</strong> — você precisa estar no chat dirigindo</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400 mt-1">•</span><span><strong>Acessa serviços internos sem integração</strong> — só vê o que entrou via knowledge ou conectores aprovados</span></li>
+        </ul>
+      </div>
+
+      <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">🎯</span> Onde ir quando Cowork não cabe</h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li><strong>Precisa rodar comandos shell, ler/escrever arquivos:</strong> Claude Code</li>
+          <li><strong>Precisa integrar com sistema próprio via API:</strong> Anthropic API</li>
+          <li><strong>Precisa agente que executa em loop sem você:</strong> Claude Code com hooks ou API com tool use</li>
+        </ul>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold mb-1">Sem disco</div><div class="text-sm text-neutral-400">Sandbox conversacional</div></div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold mb-1">Sem shell</div><div class="text-sm text-neutral-400">Não executa comando</div></div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold mb-1">Síncrono</div><div class="text-sm text-neutral-400">Você no comando</div></div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600"><div class="text-emerald-400 font-bold mb-1">Outros produtos</div><div class="text-sm text-neutral-400">Para ação automática</div></div>
+      </div>
+    </section>
+
+    <!-- TÓPICO 6 -->
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">🧭 Casos de uso clássicos</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Os 6 padrões abaixo cobrem 80% dos projetos vistos em times reais. Reconhecer o padrão quando ele aparece economiza horas — você para de tratar cada caso como inédito.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-5">
+          <div class="text-2xl mb-2">👨‍💻</div>
+          <h4 class="font-semibold mb-2">Revisão de PR</h4>
+          <p class="text-sm text-neutral-400">Instructions: tom técnico, checklist. Knowledge: padrões de código, conventions, exemplos.</p>
+        </div>
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-5">
+          <div class="text-2xl mb-2">✍️</div>
+          <h4 class="font-semibold mb-2">Copy recorrente</h4>
+          <p class="text-sm text-neutral-400">Instructions: brand voice, tipo de output. Knowledge: histórico de copies que funcionaram, brand book.</p>
+        </div>
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-5">
+          <div class="text-2xl mb-2">🎧</div>
+          <h4 class="font-semibold mb-2">Atendimento a clientes</h4>
+          <p class="text-sm text-neutral-400">Instructions: tom de suporte. Knowledge: base de FAQ, política, troubleshooting.</p>
+        </div>
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-5">
+          <div class="text-2xl mb-2">🔍</div>
+          <h4 class="font-semibold mb-2">Pesquisa em base própria</h4>
+          <p class="text-sm text-neutral-400">Instructions: como citar fontes. Knowledge: papers, relatórios, transcrições.</p>
+        </div>
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-5">
+          <div class="text-2xl mb-2">📊</div>
+          <h4 class="font-semibold mb-2">Análise de relatórios</h4>
+          <p class="text-sm text-neutral-400">Instructions: formato de análise. Knowledge: relatórios históricos, KPIs, benchmarks.</p>
+        </div>
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-5">
+          <div class="text-2xl mb-2">📚</div>
+          <h4 class="font-semibold mb-2">Conteúdo padronizado</h4>
+          <p class="text-sm text-neutral-400">Instructions: estrutura fixa. Knowledge: exemplos do que é considerado bom no time.</p>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/40 p-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica final</h3>
+        <p class="text-neutral-300">Olhe sua semana atrás: quais 3 tarefas você repetiu? Esses são seus primeiros 3 projetos. Não invente caso teórico — projete pra sua dor real.</p>
+      </div>
+    </section>
+
+    <!-- RESUMO -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-emerald-900/40 via-dark-800 to-dark-800 rounded-xl border border-emerald-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">✅</span> Resumo do Módulo</h2>
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Cowork = Projects no claude.ai</strong><span class="text-neutral-400"> — contêiner persistente, não conversa avulsa</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Contexto persiste por injeção, não por memória</strong><span class="text-neutral-400"> — system prompt é remontado a cada chat</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">4 slots distintos</strong><span class="text-neutral-400"> — nome, instructions, knowledge, chats</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Regra das 3 vezes</strong><span class="text-neutral-400"> — cria projeto quando repete pela 3ª</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Sem ações em disco</strong><span class="text-neutral-400"> — pra isso existe Claude Code</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">6 casos clássicos</strong><span class="text-neutral-400"> — PR, copy, suporte, pesquisa, análise, conteúdo</span></div></div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+          <h3 class="font-semibold text-emerald-400 mb-2">Próximo módulo:</h3>
+          <p class="text-neutral-300">1.2 — Anatomia da interface do Projects</p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="index.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Voltar para Trilha</a>
+          <a href="modulo-1-2.html" class="flex-1 text-center px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-500 transition-colors">Próximo Módulo →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-dark-600 py-8 mt-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+      <p>Claude Cowork · Módulo 1.1 · <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'light') { darkIcon.classList.remove('hidden'); html.classList.remove('dark'); }
+    else { lightIcon.classList.remove('hidden'); }
+    themeToggle.addEventListener('click', () => {
+      darkIcon.classList.toggle('hidden'); lightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>
